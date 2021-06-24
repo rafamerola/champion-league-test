@@ -1,13 +1,12 @@
 # About
 
-This repository is created for the case study.
+Este repositório foi criado para um teste de emprego.
 
 ## Install
 #### 1. Clone the repository
 
 ```bash
-git clone https://github.com/gdegirmenci/laravel-champions-league.git
-cd champ
+git clone https://github.com/rafamerola/champion-league-test.git
 ```
 
 #### 2. Set .env
@@ -21,58 +20,43 @@ composer install
 npm install
 ```
 
-#### 4. Build and run Docker
-```bash
-cd dock
-docker-compose build
-docker-compose up -d
-```
-
-#### 5. Set DB Host
-After creating .env file, please run the command below and get your local IP for DB host
-
-For MacOS and Linux
-```
-ifconfig
-```
-
-For Windows
-```
-ipconfig
-```
-
-Inside .env file, find the line 10
-```dotenv
-DB_HOST=192.168.x.x
-```
-
-
-#### 6. Database Migrations
+#### 4. Database Migrations
 ```bash
 php artisan migrate
 ```
+php artisan db:seed   
 
-## Usage
-- Before usage, please run the command for serve front-end
+## Start Server
+- Rode o servidor com o seguinte comando:
 ```
-npm run watch
-```
-
-- Create some entries inside clubs table like
-```
-#name           #attack_power   #defense_power
-Galatasaray     70              80
-Fenerbahçe      80              70
-Beşiktaş        80              70
-Trabzonspor     70              60
+php artisan serve
 ```
 
-- Create the initial fixture
-```
-localhost:8180/api/create
-```
+## Para os testes aconselhavel utilização do POSTMAN
 
-- Go to application and start the league
-```
-localhost:8180
+Lista de Requisições:
+
+http://127.0.0.1:8000/jogadores/ - Listar TODOS OS JOGADORES (METODO GET)
+
+http://127.0.0.1:8000/times/ - listar TODOS OS TIMES (METODO GET)
+
+http://127.0.0.1:8000/jogos/ - listar TODOS OS JOGOS (METODO GET)
+
+http://127.0.0.1:8000/jogadores/add - adiciona jogadores (METODO POST - PARAMETROS: name, description, number, team_id)
+
+http://127.0.0.1:8000/times/add - Adiciona Times (METODO POST - PARAMETROS: name, image)
+
+http://127.0.0.1:8000/jogos/add - Adiciona Jogos (METODO POST - PARAMETROS: house_team_id, guest_team_id, score_house_team, score_guest_team)
+
+http://127.0.0.1:8000/jogadores/{ID} - Edita o jogador (METODO PUT - PASSANDO OS MESMOS PARAMETROS DE CADASTRO)
+
+http://127.0.0.1:8000/times/{ID} - Edita o time (METODO PUT - PASSANDO OS MESMOS PARAMETROS DE CADASTRO)
+
+http://127.0.0.1:8000/jogos/{ID} - Edita os jogos (METODO PUT - PASSANDO OS MESMOS PARAMETROS DE CADASTRO)
+
+http://127.0.0.1:8000/times/{ID} - Remove o Time (METODO DELETE - PASSANDO O ID DO TIME QUE DESEJA EXCLUIR)
+
+http://127.0.0.1:8000/jogadores/{ID} - Remove o Jogador (METODO DELETE - PASSANDO O ID DO JOGADOR QUE DESEJA EXCLUIR)
+
+http://127.0.0.1:8000/jogos/{ID} - Remove a Partida (METODO DELETE - PASSANDO O ID DA PARTIDA QUE DESEJA EXCLUIR)
 ```
